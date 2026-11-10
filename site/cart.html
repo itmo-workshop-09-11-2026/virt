@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина — у дядушек Вирта</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">у дядушек Вирта</a>
+            <div class="header-nav">
+                <a href="index.html">← Вернуться в каталог</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-page cart-page-layout">
+        <section class="cart-items-section">
+            <h2>Ваша корзина</h2>
+            <p id="cart-empty" class="empty-message" hidden>Корзина пуста</p>
+            <ul id="cart-list"></ul>
+        </section>
+
+        <section class="cart-checkout-section">
+            <div class="checkout-card">
+                <h3>Оформление заказа</h3>
+                
+                <div class="promo-block">
+                    <input type="text" id="promo-input" placeholder="Промокод (DEEPSEEK)">
+                    <button type="button" id="promo-btn" class="btn-outline">ОК</button>
+                </div>
+                <p id="promo-message" role="status"></p>
+
+                <div class="delivery-options">
+                    <p class="label">Способ получения:</p>
+                    <label class="delivery-radio">
+                        <input type="radio" name="delivery" value="pickup" checked>
+                        <span class="radio-custom"></span>
+                        <span>Самовывоз (СПб, ИТМО)</span>
+                    </label>
+                    <label class="delivery-radio">
+                        <input type="radio" name="delivery" value="online">
+                        <span class="radio-custom"></span>
+                        <span>Онлайн-доставка</span>
+                    </label>
+                </div>
+
+                <div id="cart-total" class="cart-total" aria-live="polite">
+                    <span>Итого:</span>
+                    <span><span id="total-price">0</span> ₽</span>
+                </div>
+
+                <button id="checkout-btn" class="btn-filled" style="width: 100%; padding: 18px; font-size: 1.1rem;">Оформить заказ</button>
+                <p id="checkout-message" class="msg-success" style="text-align: center; margin-top: 16px;"></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js" defer></script>
+</body>
+</html>

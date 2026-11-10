@@ -3,55 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Космический магазин — команда 3</title>
+    <title>у дядушек Вирта — Космический магазин</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>🚀 Космический магазин</h1>
-        <p>Собери корзину для полёта!</p>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">у дядушек Вирта</a>
+            <div class="header-nav">
+                <a href="cart.html" class="cart-link">
+                    Корзина <span class="cart-badge" id="cart-count-badge">0</span>
+                </a>
+            </div>
+        </div>
     </header>
 
-    <main>
+    <main class="main-page">
         <section id="catalog-section" aria-labelledby="catalog-title">
-            <h2 id="catalog-title">Каталог</h2>
+            <div class="section-header">
+                <h2 id="catalog-title">Космическая коллекция</h2>
+                <p class="subtitle">Все для вашего идеального полета</p>
+            </div>
+
+            <!-- Круглые кнопки категорий -->
+            <div class="category-pills" id="category-pills">
+                <button class="pill active" data-category="all">Все</button>
+                <!-- Остальные категории добавит JS -->
+            </div>
 
             <div id="catalog-controls" class="catalog-controls">
-                <input type="search" id="search-input" placeholder="Поиск по названию…"
-                       aria-label="Поиск товаров по названию" autocomplete="off">
-                <select id="category-select" aria-label="Фильтр по категории">
-                    <option value="all">Все категории</option>
-                </select>
+                <input type="search" id="search-input" placeholder="Поиск по названию…" autocomplete="off">
                 <select id="sort-select" aria-label="Сортировка по цене">
-                    <option value="default">Без сортировки</option>
-                    <option value="asc">Цена: сначала дешевле</option>
-                    <option value="desc">Цена: сначала дороже</option>
+                    <option value="default">Сортировка</option>
+                    <option value="asc">Сначала дешевле</option>
+                    <option value="desc">Сначала дороже</option>
                 </select>
-                <button type="button" id="favorites-toggle" aria-pressed="false">♡ Избранное</button>
-                <button type="button" id="reset-filters" class="secondary" hidden>Сбросить фильтры</button>
+                <button type="button" id="favorites-toggle" class="btn-outline" aria-pressed="false">♡ Избранное</button>
             </div>
 
-            <p id="catalog-empty" class="empty-message" hidden>Ничего не найдено — измените поиск или фильтры.</p>
+            <p id="catalog-empty" class="empty-message" hidden>Ничего не найдено.</p>
             <div id="products-grid" class="products-grid"></div>
         </section>
-
-        <section id="cart-section" aria-labelledby="cart-title">
-            <h2 id="cart-title">Корзина</h2>
-            <p id="cart-empty" class="empty-message">Корзина пуста</p>
-            <ul id="cart-list"></ul>
-
-            <div id="cart-total" class="cart-total" aria-live="polite">
-                Итого: <span id="total-price">0</span> ₽
-            </div>
-
-            <div id="promo-container">
-                <input type="text" id="promo-input" placeholder="Промокод"
-                       aria-label="Промокод" autocomplete="off">
-                <button type="button" id="promo-btn">Применить</button>
-            </div>
-            <p id="promo-message" role="status"></p>
-        </section>
     </main>
+
+    <!-- Модальное окно товара -->
+    <div id="product-modal" class="modal-overlay" hidden>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-grid">
+                <img id="modal-img" class="modal-image" src="" alt="">
+                <div class="modal-info">
+                    <span id="modal-category" class="product-category"></span>
+                    <h2 id="modal-name"></h2>
+                    <p id="modal-price" class="price" style="font-size: 2rem; margin: 16px 0;"></p>
+                    <p class="modal-desc">Идеальный выбор для настоящего космического путешественника. Высокое качество и надежность от дядушек Вирта.</p>
+                    <button id="modal-add-btn" class="btn-filled" style="width: 100%; padding: 16px; font-size: 1.1rem;">Добавить в корзину</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="app.js" defer></script>
 </body>
