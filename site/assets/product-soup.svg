@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-label="Туба борща">
+  <rect width="200" height="150" rx="14" fill="#3a1f1f"/>
+  <circle cx="34" cy="120" r="8" fill="#f97316"/>
+  <rect x="70" y="30" width="60" height="86" rx="30" fill="#e11d48"/>
+  <rect x="64" y="24" width="72" height="14" rx="7" fill="#9f1239"/>
+  <circle cx="100" cy="70" r="12" fill="#fca5a5"/>
+  <circle cx="88" cy="88" r="6" fill="#fca5a5"/>
+  <text x="100" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#fecaca">Туба борща</text>
+</svg>

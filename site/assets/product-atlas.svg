@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-label="Атлас созвездий">
+  <rect width="200" height="150" rx="14" fill="#111827"/>
+  <rect x="52" y="26" width="96" height="98" rx="8" fill="#1e293b"/>
+  <circle cx="76" cy="54" r="3" fill="#fde68a"/>
+  <circle cx="104" cy="40" r="3" fill="#fde68a"/>
+  <circle cx="126" cy="66" r="3" fill="#fde68a"/>
+  <circle cx="86" cy="86" r="3" fill="#fde68a"/>
+  <path d="M76 54 L104 40 L126 66 L86 86 Z" stroke="#fde68a" stroke-width="1.5" fill="none"/>
+  <text x="100" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#e2e8f0">Атлас созвездий</text>
+</svg>

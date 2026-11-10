@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-label="Ледяная вода Комета">
+  <rect width="200" height="150" rx="14" fill="#0c2d48"/>
+  <circle cx="166" cy="28" r="9" fill="#67e8f9"/>
+  <path d="M100 24 L122 52 L122 118 Q122 124 116 124 L84 124 Q78 124 78 118 L78 52 Z" fill="#a5f3fc"/>
+  <rect x="84" y="18" width="32" height="10" rx="5" fill="#22d3ee"/>
+  <circle cx="100" cy="80" r="14" fill="#0e7490"/>
+  <text x="100" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#cffafe">Вода «Комета»</text>
+</svg>

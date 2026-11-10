@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-label="Космо-пазл Галактика">
+  <rect width="200" height="150" rx="14" fill="#1f1147"/>
+  <rect x="52" y="30" width="96" height="86" rx="8" fill="#7c3aed"/>
+  <rect x="56" y="34" width="44" height="40" rx="4" fill="#a78bfa"/>
+  <rect x="100" y="34" width="44" height="40" rx="4" fill="#c4b5fd"/>
+  <rect x="56" y="74" width="44" height="38" rx="4" fill="#c4b5fd"/>
+  <rect x="100" y="74" width="44" height="38" rx="4" fill="#a78bfa"/>
+  <circle cx="122" cy="54" r="6" fill="#fde68a"/>
+  <text x="100" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#ddd6fe">Космо-пазл</text>
+</svg>

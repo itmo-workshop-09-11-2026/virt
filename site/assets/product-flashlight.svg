@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-label="Фонарик Starlight">
+  <rect width="200" height="150" rx="14" fill="#082f49"/>
+  <rect x="70" y="46" width="70" height="24" rx="8" fill="#38bdf8" transform="rotate(20 105 58)"/>
+  <rect x="132" y="40" width="20" height="28" rx="4" fill="#e0f2fe" transform="rotate(20 142 54)"/>
+  <path d="M158 66 L186 54 M158 70 L188 70 M158 74 L186 86" stroke="#fde047" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="76" cy="112" r="5" fill="#7dd3fc"/>
+  <text x="100" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#e0f2fe">Фонарик Starlight</text>
+</svg>

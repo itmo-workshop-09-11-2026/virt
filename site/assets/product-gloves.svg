@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-label="Перчатки астронавта">
+  <rect width="200" height="150" rx="14" fill="#334155"/>
+  <path d="M78 108 V64 q0-10 10-10 q10 0 10 10 V60 q0-10 10-10 q10 0 10 10 v6 q0-10 10-10 q10 0 10 10 v34 q0 18-20 18 h-20 q-20 0-20-18 Z" fill="#f1f5f9"/>
+  <rect x="78" y="104" width="40" height="12" rx="6" fill="#94a3b8"/>
+  <text x="100" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#e2e8f0">Перчатки астронавта</text>
+</svg>

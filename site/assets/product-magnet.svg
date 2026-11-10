@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-label="Магнит Луна">
+  <rect width="200" height="150" rx="14" fill="#0f172a"/>
+  <circle cx="100" cy="66" r="34" fill="#e2e8f0"/>
+  <circle cx="88" cy="56" r="7" fill="#94a3b8"/>
+  <circle cx="112" cy="74" r="5" fill="#94a3b8"/>
+  <circle cx="98" cy="82" r="4" fill="#cbd5e1"/>
+  <rect x="70" y="104" width="60" height="10" rx="5" fill="#64748b"/>
+  <text x="100" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#e2e8f0">Магнит «Луна»</text>
+</svg>

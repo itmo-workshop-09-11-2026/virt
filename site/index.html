@@ -13,42 +13,46 @@
     </header>
 
     <main>
-        <section id="catalog">
-            <h2>Каталог</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <h3>Космический батончик</h3>
-                    <p class="price">100 ₽</p>
-                    <button class="add-btn" data-id="bar" data-name="Космический батончик" data-price="100">Добавить</button>
-                </div>
-                <div class="product-card">
-                    <h3>Книга по JS</h3>
-                    <p class="price">200 ₽</p>
-                    <button class="add-btn" data-id="book" data-name="Книга по JS" data-price="200">Добавить</button>
-                </div>
-                <div class="product-card">
-                    <h3>Настольная игра</h3>
-                    <p class="price">50 ₽</p>
-                    <button class="add-btn" data-id="game" data-name="Настольная игра" data-price="50">Добавить</button>
-                </div>
+        <section id="catalog-section" aria-labelledby="catalog-title">
+            <h2 id="catalog-title">Каталог</h2>
+
+            <div id="catalog-controls" class="catalog-controls">
+                <input type="search" id="search-input" placeholder="Поиск по названию…"
+                       aria-label="Поиск товаров по названию" autocomplete="off">
+                <select id="category-select" aria-label="Фильтр по категории">
+                    <option value="all">Все категории</option>
+                </select>
+                <select id="sort-select" aria-label="Сортировка по цене">
+                    <option value="default">Без сортировки</option>
+                    <option value="asc">Цена: сначала дешевле</option>
+                    <option value="desc">Цена: сначала дороже</option>
+                </select>
+                <button type="button" id="favorites-toggle" aria-pressed="false">♡ Избранное</button>
+                <button type="button" id="reset-filters" class="secondary" hidden>Сбросить фильтры</button>
             </div>
+
+            <p id="catalog-empty" class="empty-message" hidden>Ничего не найдено — измените поиск или фильтры.</p>
+            <div id="products-grid" class="products-grid"></div>
         </section>
 
-        <section id="cart-section">
-            <h2>Корзина</h2>
+        <section id="cart-section" aria-labelledby="cart-title">
+            <h2 id="cart-title">Корзина</h2>
+            <p id="cart-empty" class="empty-message">Корзина пуста</p>
             <ul id="cart-list"></ul>
-            <div id="cart-total">
+
+            <div id="cart-total" class="cart-total" aria-live="polite">
                 Итого: <span id="total-price">0</span> ₽
             </div>
 
             <div id="promo-container">
-                <input type="text" id="promo-input" placeholder="Промокод (DEEPSEEK)">
-                <button id="promo-btn">Применить</button>
+                <input type="text" id="promo-input" placeholder="Промокод"
+                       aria-label="Промокод" autocomplete="off">
+                <button type="button" id="promo-btn">Применить</button>
             </div>
-            <p id="promo-message"></p>
+            <p id="promo-message" role="status"></p>
         </section>
     </main>
 
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
 </body>
 </html>

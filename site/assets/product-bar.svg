@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-label="Космический батончик">
+  <rect width="200" height="150" rx="14" fill="#1b2447"/>
+  <circle cx="168" cy="26" r="10" fill="#ffd76e"/>
+  <rect x="60" y="38" width="80" height="74" rx="12" fill="#8b5cf6"/>
+  <rect x="72" y="30" width="56" height="16" rx="8" fill="#c4b5fd"/>
+  <rect x="72" y="104" width="56" height="16" rx="8" fill="#6d28d9"/>
+  <circle cx="100" cy="75" r="16" fill="#facc15"/>
+  <text x="100" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#e2e8f0">Космический батончик</text>
+</svg>
