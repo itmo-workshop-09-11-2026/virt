@@ -1,11 +1,13 @@
-"""Локальный сервер магазина. python3 main.py [--pack]. Только стандартная библиотека."""
+"""Локальный сервер магазина: статика site/ + API backend. python3 main.py [--pack] [--reset-db]. Только стандартная библиотека."""
 import argparse
 from functools import partial
-from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from http.server import ThreadingHTTPServer
 import os
 from pathlib import Path
 import tempfile
 import zipfile
+
+import backend
 
 
 def raise_walk_error(error):
@@ -38,6 +40,8 @@ def pack(site):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--pack', action='store_true', help='Упаковать site/ в shop.zip')
+    parser.add_argument('--reset-db', action='store_true',
+                        help='Пересоздать SQLite-базу с тестовыми товарами (backend)')
     args = parser.parse_args()
     site = Path('site')
     if not (site / 'index.html').is_file():
@@ -45,11 +49,13 @@ def main():
     if args.pack:
         pack(site)
         return
+    backend.init_db(reset=args.reset_db)
     host = os.environ.get('HOST', '127.0.0.1')
     port = int(os.environ.get('PORT', '8000'))
-    handler = partial(SimpleHTTPRequestHandler, directory=str(site.resolve()))
+    handler = partial(backend.ShopAPIHandler, directory=str(site.resolve()))
     with ThreadingHTTPServer((host, port), handler) as server:
         print(f'Open http://localhost:{port} - Ctrl+C to stop', flush=True)
+        print(f'API: http://localhost:{port}/api/products (SQLite: {backend.DB_PATH})', flush=True)
         try:
             server.serve_forever()
         except KeyboardInterrupt:

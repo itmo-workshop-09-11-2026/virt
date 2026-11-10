@@ -9,7 +9,9 @@ const FAVORITES_KEY = 'team3:favorites:v1';
 const PLACEHOLDER_IMAGE = './assets/placeholder.svg';
 const MAX_QTY = 99;
 
-const PRODUCTS = [
+// B1: каталог приходит с сервера (GET /api/products). Этот массив — fallback,
+// чтобы статическая версия без backend продолжала работать из shop.zip.
+let PRODUCTS = [
     { id: 'bar',        name: 'Космический батончик',   price: 100, category: 'Еда',        image: './assets/product-bar.svg' },
     { id: 'soup',       name: 'Туба борща',             price: 250, category: 'Еда',        image: './assets/product-soup.svg' },
     { id: 'water',      name: 'Вода «Комета»',          price: 80,  category: 'Еда',        image: './assets/product-water.svg' },
@@ -323,9 +325,14 @@ function applyPromo() {
 /* ---------- Инициализация ---------- */
 
 function bindEvents() {
+    // B2: поиск уходит на сервер; запрос с debounce, чтобы не дёргать API на каждый символ.
+    let searchTimer = null;
     $('#search-input').addEventListener('input', (e) => {
-        searchTerm = e.target.value.trim();
-        renderCatalog();
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+            searchTerm = e.target.value.trim();
+            renderCatalog();
+        }, 250);
     });
     $('#category-select').addEventListener('change', (e) => {
         selectedCategory = e.target.value;
@@ -358,7 +365,6 @@ function bindEvents() {
 }
 
 loadState();
-fillCategories();
 bindEvents();
-renderCatalog();
+renderCatalog().then(fillCategories); // каталог и категории с сервера (B1), при сбое — fallback
 renderCart();

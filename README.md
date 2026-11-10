@@ -73,6 +73,65 @@ python3 main.py --pack
 
 Сайты одной GitHub-организации делят `localStorage`. Используйте ключ с номером команды, например `team07:cart:v1`. Разные пути на одном домене не обеспечивают изоляцию доступа к хранилищу.
 
+## Backend (B1–B6)
+
+Backend на **Python 3.12+** (только стандартная библиотека, зависимости устанавливать не нужно), код в `backend.py`. Сайт и API отдаются с одного сервера `main.py`, поэтому CORS не требуется. Данные хранятся в SQLite (`shop.db`): база создаётся автоматически с 12 тестовыми товарами и сохраняется между перезапусками сервера. `shop.db` не попадает в Git, пересоздать тестовые данные можно флагом `--reset-db`.
+
+Запуск (из корня проекта):
+
+```bash
+python3 main.py             # сайт + API на http://127.0.0.1:8000
+python3 main.py --reset-db  # то же, но база пересоздаётся с тестовыми товарами
+```
+
+Переменные окружения (пример в `.env.example`): `ADMIN_TOKEN` — токен администратора (B6), `SHOP_DB` — путь к базе, `HOST`/`PORT` — адрес сервера.
+
+### API
+
+| Метод и адрес | Описание |
+|---|---|
+| `GET /api/products?search=&category=` | Каталог в JSON. `search` — поиск по названию, `category` — фильтр (B1, B2) |
+| `GET /api/categories` | Список категорий |
+| `POST /api/orders` | Создание заказа: сервер сам считает сумму по своим ценам и списывает остатки (B3, B5) |
+| `GET /api/orders/<id>` | Заказ по ID |
+| `POST /api/products` | Добавить товар. Только с заголовком `X-Admin-Token` (B6) |
+| `PATCH /api/products/<id>` | Изменить товар (цена, остатки и т. д.). Только с `X-Admin-Token` (B6) |
+
+Каталог страницы грузится из `GET /api/products` (B1), поиск и фильтр категорий уходят на сервер (B2). Если API недоступен (например, открыта статическая версия из `shop.zip` без backend), страница работает на встроенном массиве товаров — обязательный минимум не ломается.
+
+### Примеры проверки через curl
+
+```bash
+# Каталог и поиск (B1, B2)
+curl http://localhost:8000/api/products
+curl "http://localhost:8000/api/products?search=батончик&category=Еда"
+
+# Заказ на 300 ₽ (B3): сервер считает сумму сам
+curl -X POST http://localhost:8000/api/orders \
+  -H "Content-Type: application/json" \
+  -d '{"items":[{"productId":"book","quantity":1},{"productId":"magnet","quantity":1}]}'
+
+# Ошибки дают понятный 4xx, заказ не создаётся
+curl -X POST http://localhost:8000/api/orders \
+  -H "Content-Type: application/json" \
+  -d '{"items":[{"productId":"book","quantity":0}]}'
+
+# Остатки: заказ списывает stock, продажа большего количества вернёт ошибку (B5)
+curl -X POST http://localhost:8000/api/orders \
+  -H "Content-Type: application/json" \
+  -d '{"items":[{"productId":"book","quantity":999}]}'
+
+# Изменение каталога только с токеном (B6)
+export ADMIN_TOKEN=my-secret-token
+curl -X POST http://localhost:8000/api/products \
+  -H "Content-Type: application/json" \
+  -H "X-Admin-Token: my-secret-token" \
+  -d '{"id":"tea","name":"Чай «Орбита»","price":120,"category":"Еда","stock":5}'
+# Без заголовка X-Admin-Token сервер вернёт 403
+```
+
+Токен задаётся только в переменной окружения сервера и **не встраивается в JavaScript сайта**. Статическая обязательная версия хранится отдельно в `shop.zip` (`python3 main.py --pack`) и работает без API.
+
 ## Docker и Make (по желанию)
 
 ```bash
